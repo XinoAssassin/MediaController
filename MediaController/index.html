@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Media Controller</title>
+    </head>
+    <body>
+        <div id="root">
+            <button onclick="handleClick('play')">PLAY</button>
+            <button onclick="handleClick('next')">NEXT</button>
+            <button onclick="handleClick('prev')">PREV</button>
+
+        </div>
+    <script>
+        function handleClick(method){
+            let data = {
+                type: null
+            };
+
+            switch (method){
+                case "play":
+                    data.type = "play";
+                    break;
+                case "next":
+                    data.type = "next";
+                    break;
+                case "prev":
+                    data.type = "prev";
+                    break;
+                default:
+                    break;
+            }
+            fetch(window.URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+        }
+    </script>
+</body>>
+</html>
